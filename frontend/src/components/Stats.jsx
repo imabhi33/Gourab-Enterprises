@@ -21,15 +21,15 @@ function StatCard({ item, index }) {
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.12, duration: 0.7, ease: 'easeOut' }}
-      className="glass glow-border rounded-xl p-6 sm:p-8 flex flex-col items-center text-center card-lift"
+      className="glass glow-border rounded-xl p-4 sm:p-8 flex flex-col items-center text-center card-lift min-h-[168px] sm:min-h-0"
     >
-      <div className={`w-13 h-13 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center mb-4 shadow-lg`}>
+      <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center mb-3 sm:mb-4 shadow-lg`}>
         <Icon className="text-white text-xl sm:text-2xl" />
       </div>
-      <div className="font-display text-3xl sm:text-4xl lg:text-5xl text-gold-gradient mb-1">
+      <div className="font-display text-2xl sm:text-4xl lg:text-5xl text-gold-gradient mb-1">
         {item.value}
       </div>
-      <p className="font-heading text-slate-300 text-xs sm:text-sm tracking-widest uppercase mt-1 leading-snug">{item.label}</p>
+      <p className="font-heading text-slate-300 text-[0.65rem] sm:text-sm tracking-[0.18em] sm:tracking-widest uppercase mt-1 leading-snug">{item.label}</p>
     </motion.div>
   );
 }

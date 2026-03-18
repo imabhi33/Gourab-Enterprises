@@ -34,10 +34,34 @@ const PRODUCT_OPTIONS = [
   'Multiple Products',
 ];
 
-async function submitEnquiry(form) {
-  if (!ENQUIRY_WEBHOOK_URL) {
+function getValidatedWebhookUrl() {
+  const raw = ENQUIRY_WEBHOOK_URL.trim();
+
+  if (!raw) {
     throw new Error('Missing VITE_ENQUIRY_WEBHOOK_URL');
   }
+
+  let parsedUrl;
+  try {
+    parsedUrl = new URL(raw);
+  } catch {
+    throw new Error('Invalid enquiry webhook URL');
+  }
+
+  const isGoogleScript =
+    parsedUrl.protocol === 'https:' &&
+    parsedUrl.hostname === 'script.google.com' &&
+    parsedUrl.pathname.includes('/macros/s/');
+
+  if (!isGoogleScript) {
+    throw new Error('VITE_ENQUIRY_WEBHOOK_URL must be a valid Google Apps Script web app URL');
+  }
+
+  return parsedUrl.toString();
+}
+
+async function submitEnquiry(form) {
+  const webhookUrl = getValidatedWebhookUrl();
 
   const now = new Date();
   const payload = {
@@ -49,7 +73,7 @@ async function submitEnquiry(form) {
     source: 'website',
   };
 
-  const response = await fetch(ENQUIRY_WEBHOOK_URL, {
+  const response = await fetch(webhookUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain;charset=utf-8',
@@ -119,7 +143,7 @@ export default function Contact() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            className="font-heading text-yellow-500 text-xs sm:text-sm tracking-[0.4em] uppercase mb-3"
+            className="font-heading text-xs sm:text-sm tracking-[0.24em] sm:tracking-[0.4em] uppercase mb-3"
           >
             Get In Touch
           </motion.p>
@@ -152,13 +176,13 @@ export default function Contact() {
             {info.map(({ Icon, label, value, href }) => (
               <div
                 key={label}
-                className="rounded-3xl border border-[#7e6930] bg-[#101f3c] px-5 py-6 sm:px-6 sm:py-7 flex items-center gap-5 shadow-[0_22px_55px_rgba(3,8,20,0.25)]"
+                className="rounded-3xl border border-[#7e6930] bg-[#101f3c] px-4 py-5 sm:px-6 sm:py-7 flex items-center gap-4 sm:gap-5 shadow-[0_22px_55px_rgba(3,8,20,0.25)]"
               >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#d8a300] rounded-full flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#d8a300] rounded-full flex items-center justify-center shrink-0">
                   <Icon className="text-[#0a1628] text-lg sm:text-xl" />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-heading text-yellow-400 text-xs sm:text-sm tracking-[0.28em] uppercase mb-1">
+                  <p className="font-heading text-yellow-400 text-[0.62rem] sm:text-sm tracking-[0.18em] sm:tracking-[0.28em] uppercase mb-1">
                     {label}
                   </p>
                   {href ? (
@@ -166,12 +190,12 @@ export default function Contact() {
                       href={href}
                       target={href.startsWith('http') ? '_blank' : undefined}
                       rel={href.startsWith('http') ? 'noreferrer' : undefined}
-                      className="text-slate-100 font-body text-lg sm:text-[1.05rem] hover:text-yellow-200 transition-colors block"
+                      className="text-slate-100 font-body text-base sm:text-[1.05rem] hover:text-yellow-200 transition-colors block break-words"
                     >
                       {value}
                     </a>
                   ) : (
-                    <p className="text-slate-100 font-body text-lg sm:text-[1.05rem]">{value}</p>
+                    <p className="text-slate-100 font-body text-base sm:text-[1.05rem] break-words">{value}</p>
                   )}
                 </div>
               </div>
@@ -183,9 +207,9 @@ export default function Contact() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.8 }}
             onSubmit={handleSubmit}
-            className="rounded-[2rem] border border-[#7e6930] bg-[#101f3c] p-6 sm:p-9 flex flex-col gap-5 shadow-[0_28px_80px_rgba(3,8,20,0.35)]"
+            className="rounded-[1.6rem] sm:rounded-[2rem] border border-[#7e6930] bg-[#101f3c] p-4 sm:p-9 flex flex-col gap-4 sm:gap-5 shadow-[0_28px_80px_rgba(3,8,20,0.35)]"
           >
-            <h3 className="font-heading text-2xl text-yellow-400 tracking-[0.18em] uppercase">Send Enquiry</h3>
+            <h3 className="font-heading text-xl sm:text-2xl text-yellow-400 tracking-[0.12em] sm:tracking-[0.18em] uppercase">Send Enquiry</h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input
@@ -234,7 +258,7 @@ export default function Contact() {
               placeholder="Your requirements, quantity needed, delivery location..."
               value={form.message}
               onChange={handleChange}
-              className={`${inputClass} resize-none min-h-[132px]`}
+              className={`${inputClass} resize-none min-h-[120px] sm:min-h-[132px]`}
             />
 
             {status === 'sent' && (
@@ -244,7 +268,7 @@ export default function Contact() {
             )}
             {status === 'error' && (
               <div className="bg-red-900/30 border border-red-700/40 rounded-xl px-4 py-3 text-red-300 font-body text-sm">
-                Could not save the enquiry right now. Please call or WhatsApp us directly.
+                Could not save the enquiry right now. Please check the webhook URL in Vercel or call us directly.
               </div>
             )}
 
@@ -281,7 +305,7 @@ export default function Contact() {
           <div className="md:col-span-2 glass glow-border rounded-2xl overflow-hidden" style={{ minHeight: '300px' }}>
             <div className="h-10 flex items-center px-4 sm:px-5 border-b border-yellow-900/30 gap-2">
               <FaMapMarkerAlt className="text-yellow-400 shrink-0" />
-              <span className="font-heading text-yellow-400 text-sm tracking-wider uppercase">Our Location</span>
+              <span className="font-heading text-yellow-400 text-xs sm:text-sm tracking-[0.14em] sm:tracking-wider uppercase">Our Location</span>
               <span className="ml-auto font-body text-slate-500 text-xs hidden sm:block">P45P+W6 Chandikhol, Odisha</span>
             </div>
             <iframe

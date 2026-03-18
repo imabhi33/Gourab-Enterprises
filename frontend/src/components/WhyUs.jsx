@@ -51,12 +51,12 @@ function FeatureCard({ f }) {
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: f.delay, duration: 0.65, ease: 'easeOut' }}
-      className="glass glow-border rounded-2xl p-8 card-lift group"
+      className="glass glow-border rounded-2xl p-5 sm:p-8 card-lift group"
     >
-      <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${f.color} flex items-center justify-center mb-6 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+      <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${f.color} flex items-center justify-center mb-5 sm:mb-6 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
         <f.Icon className="text-white text-2xl" />
       </div>
-      <h3 className="font-heading text-xl text-white mb-3 font-bold">{f.title}</h3>
+      <h3 className="font-heading text-lg sm:text-xl text-white mb-3 font-bold">{f.title}</h3>
       <p className="text-steel-400 text-sm font-body leading-relaxed">{f.desc}</p>
       <div className={`mt-5 h-0.5 bg-gradient-to-r ${f.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full`} />
     </motion.div>
@@ -68,7 +68,7 @@ export default function WhyUs() {
   const headInView = useInView(headRef, { once: true, margin: '-80px' });
 
   return (
-    <section id="whyus" className="relative py-24 bg-steel-950">
+    <section id="whyus" className="relative py-16 sm:py-24 bg-steel-950">
       {/* Background geometric accent */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-gold-900/10 blur-3xl" />
@@ -81,7 +81,7 @@ export default function WhyUs() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={headInView ? { opacity: 1 } : {}}
-            className="font-heading text-gold-500 text-sm tracking-[0.4em] uppercase mb-3"
+            className="font-heading text-xs sm:text-sm tracking-[0.24em] sm:tracking-[0.4em] uppercase mb-3"
           >
             Our Advantage
           </motion.p>
@@ -89,7 +89,7 @@ export default function WhyUs() {
             initial={{ opacity: 0, y: 30 }}
             animate={headInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.15, duration: 0.7 }}
-            className="font-display text-5xl sm:text-6xl text-white mb-4"
+            className="font-display text-4xl sm:text-6xl text-white mb-4"
           >
             WHY CHOOSE <span className="text-gold-gradient">US?</span>
           </motion.h2>
@@ -102,7 +102,7 @@ export default function WhyUs() {
         </div>
 
         {/* Feature cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {features.map((f) => <FeatureCard key={f.title} f={f} />)}
         </div>
       </div>

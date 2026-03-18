@@ -180,7 +180,7 @@ export default function Products() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={headInView ? { opacity: 1 } : {}}
-            className="font-heading text-yellow-500 text-xs sm:text-sm tracking-[0.4em] uppercase mb-3"
+            className="font-heading text-xs sm:text-sm tracking-[0.24em] sm:tracking-[0.4em] uppercase mb-3"
           >
             Our Inventory
           </motion.p>
@@ -202,10 +202,10 @@ export default function Products() {
             Genuine ISI-certified materials from India's most trusted brands — quality guaranteed.
           </p>
           {/* Pricing notice */}
-          <div className="inline-flex items-center gap-2 sm:gap-3 glass glow-border rounded-full px-4 sm:px-5 py-2.5 mt-5">
-            <span className="text-yellow-400 text-sm">💬</span>
-            <span className="font-heading text-yellow-300 text-xs sm:text-sm tracking-wide">
-              For price details, please <strong className="text-yellow-200">contact us</strong> — best market rates guaranteed
+          <div className="inline-flex max-w-full items-center gap-2 sm:gap-3 glass glow-border rounded-2xl sm:rounded-full px-4 sm:px-5 py-2.5 mt-5">
+            <span className="text-yellow-400 text-sm shrink-0">•</span>
+            <span className="font-heading text-yellow-300 text-[0.7rem] sm:text-sm tracking-wide text-left sm:text-center">
+              For price details, please <strong className="text-yellow-200">contact us</strong> - best market rates guaranteed
             </span>
           </div>
         </div>
@@ -217,7 +217,7 @@ export default function Products() {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`font-heading text-xs sm:text-sm uppercase tracking-widest px-4 sm:px-5 py-2 rounded-full border transition-all duration-300 ${
+              className={`font-heading text-[0.68rem] sm:text-sm uppercase tracking-[0.14em] sm:tracking-widest px-3 sm:px-5 py-2 rounded-full border transition-all duration-300 ${
                 filter === cat
                   ? 'bg-yellow-500 border-yellow-500 text-[#0a1628] shadow-lg shadow-yellow-500/25'
                   : 'border-slate-700 text-slate-400 hover:border-yellow-500 hover:text-yellow-400'

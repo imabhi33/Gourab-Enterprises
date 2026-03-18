@@ -62,7 +62,7 @@ export default function Gallery() {
   const next  = useCallback(() => setLightbox(i => (i + 1) % galleryImages.length), []);
 
   return (
-    <section id="gallery" className="relative py-24 bg-[#0a1628]">
+    <section id="gallery" className="relative py-16 sm:py-24 bg-[#0a1628]">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,7 +71,7 @@ export default function Gallery() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={headInView ? { opacity: 1 } : {}}
-            className="font-heading text-yellow-500 text-sm tracking-[0.4em] uppercase mb-3"
+            className="font-heading text-xs sm:text-sm tracking-[0.24em] sm:tracking-[0.4em] uppercase mb-3"
           >
             Our Space
           </motion.p>
@@ -79,7 +79,7 @@ export default function Gallery() {
             initial={{ opacity: 0, y: 30 }}
             animate={headInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.15, duration: 0.7 }}
-            className="font-display text-5xl sm:text-6xl text-white mb-4"
+            className="font-display text-4xl sm:text-6xl text-white mb-4"
           >
             SHOP <span className="text-gold-gradient">GALLERY</span>
           </motion.h2>
@@ -121,24 +121,24 @@ export default function Gallery() {
               exit={{ scale: 0.85, opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-4xl w-full mx-4"
+              className="relative max-w-4xl w-full mx-3 sm:mx-4"
             >
               <img
                 src={galleryImages[lightbox].src}
                 alt={galleryImages[lightbox].caption}
-                className="w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl"
+                className="w-full max-h-[72vh] sm:max-h-[80vh] object-contain rounded-2xl shadow-2xl"
               />
               <p className="text-center text-slate-300 font-heading text-sm tracking-widest uppercase mt-4">
                 {galleryImages[lightbox].caption}
               </p>
               {/* Controls */}
-              <button onClick={close} className="absolute -top-4 -right-4 w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-[#0a1628] hover:bg-yellow-400 transition-colors shadow-lg">
+              <button onClick={close} className="absolute top-3 right-3 sm:-top-4 sm:-right-4 w-9 h-9 sm:w-10 sm:h-10 bg-yellow-500 rounded-full flex items-center justify-center text-[#0a1628] hover:bg-yellow-400 transition-colors shadow-lg">
                 <FaTimes />
               </button>
-              <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 glass rounded-full flex items-center justify-center text-yellow-400 hover:bg-yellow-500/20 transition-colors">
+              <button onClick={prev} className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 glass rounded-full flex items-center justify-center text-yellow-400 hover:bg-yellow-500/20 transition-colors">
                 <FaChevronLeft />
               </button>
-              <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 glass rounded-full flex items-center justify-center text-yellow-400 hover:bg-yellow-500/20 transition-colors">
+              <button onClick={next} className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 glass rounded-full flex items-center justify-center text-yellow-400 hover:bg-yellow-500/20 transition-colors">
                 <FaChevronRight />
               </button>
               <p className="text-center text-slate-500 text-xs mt-2">{lightbox + 1} / {galleryImages.length}</p>

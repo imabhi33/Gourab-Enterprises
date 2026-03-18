@@ -23,27 +23,27 @@ function BrandCard({ brand, i }) {
       initial={{ opacity: 0, y: 40, scale: 0.9 }}
       animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ delay: i * 0.08, duration: 0.55 }}
-      className="relative glass glow-border rounded-[1.65rem] p-5 sm:p-6 min-h-[258px] flex flex-col items-center justify-center card-lift cursor-default group overflow-hidden"
+      className="relative glass glow-border rounded-[1.4rem] sm:rounded-[1.65rem] p-4 sm:p-6 min-h-[220px] sm:min-h-[258px] flex flex-col items-center justify-center card-lift cursor-default group overflow-hidden"
     >
       <div
-        className="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center mb-6 shadow-xl"
+        className="w-16 h-16 sm:w-24 sm:h-24 rounded-full flex items-center justify-center mb-4 sm:mb-6 shadow-xl"
         style={{
           background: `linear-gradient(135deg, ${brand.color}, ${brand.color}cc)`,
           boxShadow: `0 0 28px ${brand.color}33`,
         }}
       >
-        <span className="font-display text-2xl sm:text-[1.7rem] leading-none" style={{ color: brand.textColor }}>
+        <span className="font-display text-xl sm:text-[1.7rem] leading-none" style={{ color: brand.textColor }}>
           {brand.short}
         </span>
       </div>
 
-      <p className="font-heading text-slate-100 text-base sm:text-[1.05rem] text-center font-semibold leading-tight mb-2">
+      <p className="font-heading text-slate-100 text-sm sm:text-[1.05rem] text-center font-semibold leading-tight mb-2">
         {brand.name}
       </p>
-      <p className="text-slate-400 text-sm sm:text-[1.05rem] font-body text-center mb-5 leading-snug">{brand.desc}</p>
+      <p className="text-slate-400 text-xs sm:text-[1.05rem] font-body text-center mb-4 sm:mb-5 leading-snug">{brand.desc}</p>
 
       <span
-        className={`text-sm px-5 py-1.5 rounded-full font-heading tracking-wide font-semibold ${
+        className={`text-xs sm:text-sm px-4 sm:px-5 py-1.5 rounded-full font-heading tracking-wide font-semibold ${
           brand.cat === 'TMT'
             ? 'bg-blue-900/60 text-blue-300 border border-blue-700/40'
             : 'bg-yellow-900/40 text-yellow-300 border border-yellow-700/30'
@@ -76,7 +76,7 @@ export default function Brands() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={headInView ? { opacity: 1 } : {}}
-            className="font-heading text-yellow-500 text-sm tracking-[0.4em] uppercase mb-3"
+            className="font-heading text-xs sm:text-sm tracking-[0.24em] sm:tracking-[0.4em] uppercase mb-3"
           >
             Trusted Partners
           </motion.p>
@@ -84,7 +84,7 @@ export default function Brands() {
             initial={{ opacity: 0, y: 30 }}
             animate={headInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.15, duration: 0.7 }}
-            className="font-display text-5xl sm:text-6xl text-white mb-4"
+            className="font-display text-4xl sm:text-6xl text-white mb-4"
           >
             OUR <span className="text-gold-gradient">BRANDS</span>
           </motion.h2>
@@ -99,27 +99,27 @@ export default function Brands() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 sm:mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
           {brands.map((brand, i) => (
             <BrandCard key={brand.name} brand={brand} i={i} />
           ))}
         </div>
 
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#071020] to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#071020] to-transparent z-10" />
-          <div className="marquee-wrapper py-5 glass rounded-xl border border-yellow-900/30">
-            <div className="marquee-track gap-6 px-8">
+          <div className="absolute inset-y-0 left-0 w-12 sm:w-20 bg-gradient-to-r from-[#071020] to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-12 sm:w-20 bg-gradient-to-l from-[#071020] to-transparent z-10 pointer-events-none" />
+          <div className="marquee-wrapper py-4 sm:py-5 glass rounded-xl border border-yellow-900/30 overflow-hidden">
+            <div className="marquee-track gap-4 sm:gap-6 px-4 sm:px-8">
               {marqueeItems.map((brand, i) => (
-                <div key={`${brand.name}-${i}`} className="inline-flex items-center gap-4 mx-5">
+                <div key={`${brand.name}-${i}`} className="inline-flex items-center gap-3 sm:gap-4 mx-2 sm:mx-5">
                   <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center font-display text-sm shadow"
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-display text-xs sm:text-sm shadow shrink-0"
                     style={{ background: brand.color, color: brand.textColor }}
                   >
                     {brand.short}
                   </div>
-                  <span className="font-heading text-slate-400 text-sm tracking-wider whitespace-nowrap uppercase">{brand.name}</span>
-                  <span className="text-yellow-600 mx-1">✦</span>
+                  <span className="font-heading text-slate-400 text-xs sm:text-sm tracking-[0.12em] sm:tracking-wider whitespace-nowrap uppercase">{brand.name}</span>
+                  <span className="text-yellow-600 mx-1 text-xs sm:text-sm">✦</span>
                 </div>
               ))}
             </div>

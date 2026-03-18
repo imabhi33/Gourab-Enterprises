@@ -81,16 +81,16 @@ export default function Hero() {
 
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-500 to-transparent" />
 
-      <div className="relative z-10 w-full px-4 sm:px-8 pt-24 sm:pt-32 pb-24 sm:pb-28">
+      <div className="relative z-10 w-full px-3 sm:px-8 pt-20 sm:pt-32 pb-20 sm:pb-28">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="w-fit max-w-full mx-auto lg:mx-0 inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full border border-yellow-500/30 bg-[#1a2744]/85 backdrop-blur-xl px-4 sm:px-6 py-2.5 sm:py-3 mb-6 sm:mb-8 shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
+            className="w-fit max-w-full mx-auto lg:mx-0 inline-flex items-center justify-center gap-2 rounded-full border border-yellow-500/30 bg-[#1a2744]/85 backdrop-blur-xl px-3 sm:px-6 py-2 sm:py-3 mb-5 sm:mb-8 shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
           >
-            <span className="w-3 h-3 rounded-full bg-yellow-400 shadow-[0_0_14px_rgba(232,199,106,0.8)] inline-block" />
-            <span className="font-heading text-[0.62rem] sm:text-sm tracking-[0.14em] sm:tracking-[0.24em] text-yellow-300 uppercase text-center">
+            <span className="w-2.5 h-2.5 rounded-full bg-yellow-400 shadow-[0_0_14px_rgba(232,199,106,0.8)] inline-block shrink-0" />
+            <span className="font-heading text-[0.55rem] sm:text-sm tracking-[0.08em] sm:tracking-[0.24em] text-yellow-300 uppercase text-center">
               ISI Certified - Premium Quality
             </span>
           </motion.div>
@@ -99,13 +99,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.9, ease: 'easeOut' }}
-            className="max-w-4xl mx-auto lg:mx-0 rounded-[1.6rem] sm:rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(8,18,36,0.82),rgba(10,22,40,0.58))] backdrop-blur-md px-4 py-6 sm:px-10 sm:py-12 shadow-[0_28px_90px_rgba(0,0,0,0.42)]"
+            className="w-full max-w-[21rem] sm:max-w-4xl mx-auto lg:mx-0 rounded-[1.35rem] sm:rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(8,18,36,0.82),rgba(10,22,40,0.58))] backdrop-blur-md px-3.5 py-5 sm:px-10 sm:py-12 shadow-[0_28px_90px_rgba(0,0,0,0.42)]"
           >
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.8, ease: 'easeOut' }}
-              className="font-display text-[2.6rem] xs:text-[3rem] sm:text-[5.3rem] md:text-[7rem] leading-[0.92] mb-3 sm:mb-4"
+              className="font-display text-[2.2rem] sm:text-[5.3rem] md:text-[7rem] leading-[0.92] mb-3 sm:mb-4"
               style={{ textShadow: '0 12px 42px rgba(0,0,0,0.42)' }}
             >
               <span className="block text-white">BUILDING</span>
@@ -116,14 +116,14 @@ export default function Hero() {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 0.7, duration: 0.6 }}
-              className="divider-gold my-5 sm:my-6 max-w-[13rem] sm:max-w-sm origin-center lg:origin-left mx-auto lg:mx-0"
+              className="divider-gold my-4 sm:my-6 max-w-[10rem] sm:max-w-sm origin-center lg:origin-left mx-auto lg:mx-0"
             />
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.85, duration: 0.7 }}
-              className="font-heading text-sm sm:text-xl md:text-2xl text-slate-200 tracking-[0.22em] sm:tracking-[0.32em] uppercase mb-4 sm:mb-5 text-center lg:text-left"
+              className="font-heading text-[0.72rem] sm:text-xl md:text-2xl text-slate-200 tracking-[0.18em] sm:tracking-[0.32em] uppercase mb-4 sm:mb-5 text-center lg:text-left"
             >
               Gourab Enterprises
             </motion.p>
@@ -132,7 +132,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.7 }}
-              className="font-body text-slate-200/90 text-[0.98rem] sm:text-lg max-w-2xl leading-relaxed mb-8 sm:mb-10 text-center lg:text-left"
+              className="font-body text-slate-200/90 text-[0.9rem] sm:text-lg max-w-2xl leading-relaxed mb-6 sm:mb-10 text-center lg:text-left"
             >
               Your trusted supplier for <span className="text-yellow-400 font-semibold">TMT Rods</span> and{' '}
               <span className="text-yellow-400 font-semibold">Cement</span> from India&apos;s top brands.
@@ -143,11 +143,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.6 }}
-              className="flex flex-col lg:flex-row items-stretch lg:items-center gap-3 sm:gap-4"
+              className="flex flex-col lg:flex-row items-stretch lg:items-center gap-2.5 sm:gap-4"
             >
               <button
                 onClick={() => document.querySelector('#products')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-gold px-5 sm:px-7 py-4 text-sm sm:text-base min-w-0 lg:min-w-[220px] w-full lg:w-auto"
+                className="btn-gold px-4 sm:px-7 py-3.5 sm:py-4 text-[0.72rem] sm:text-base min-w-0 lg:min-w-[220px] w-full lg:w-auto"
               >
                 Browse Products
               </button>
@@ -155,17 +155,17 @@ export default function Hero() {
                 href={`https://wa.me/${WHATSAPP}`}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-lg border border-[#2f4f30] bg-[#112439]/85 px-5 sm:px-7 py-4 text-sm sm:text-base flex items-center justify-center gap-3 text-white font-heading tracking-[0.08em] sm:tracking-[0.12em] uppercase transition-all hover:border-green-500/50 hover:bg-[#17304c] w-full lg:w-auto"
+                className="rounded-lg border border-[#2f4f30] bg-[#112439]/85 px-4 sm:px-7 py-3.5 sm:py-4 text-[0.68rem] sm:text-base flex items-center justify-center gap-2.5 sm:gap-3 text-white font-heading tracking-[0.05em] sm:tracking-[0.12em] uppercase transition-all hover:border-green-500/50 hover:bg-[#17304c] w-full lg:w-auto"
               >
-                <FaWhatsapp className="text-green-400 text-lg" />
+                <FaWhatsapp className="text-green-400 text-base sm:text-lg shrink-0" />
                 WhatsApp Us
               </a>
               <a
                 href={`tel:${PHONE_H}`}
-                className="rounded-lg border border-yellow-500/45 bg-[#112439]/85 px-5 sm:px-7 py-4 text-sm sm:text-base flex items-center justify-center gap-3 text-yellow-300 font-heading tracking-[0.05em] sm:tracking-[0.12em] uppercase transition-all hover:border-yellow-400 hover:bg-[#1a2b45] w-full lg:w-auto break-all sm:break-normal"
+                className="rounded-lg border border-yellow-500/45 bg-[#112439]/85 px-4 sm:px-7 py-3.5 sm:py-4 text-[0.64rem] sm:text-base flex items-center justify-center gap-2 sm:gap-3 text-yellow-300 font-heading tracking-[0.02em] sm:tracking-[0.12em] uppercase transition-all hover:border-yellow-400 hover:bg-[#1a2b45] w-full lg:w-auto"
               >
-                <FaPhoneAlt className="text-yellow-400" />
-                {PHONE}
+                <FaPhoneAlt className="text-yellow-400 shrink-0" />
+                <span className="truncate">{PHONE}</span>
               </a>
             </motion.div>
           </motion.div>

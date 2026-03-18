@@ -47,7 +47,7 @@ export default function Navbar() {
           backdropFilter: scrolled ? 'blur(18px)' : 'none',
         }}
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
           {/* Logo — white pill container for clear visibility on dark navbar */}
           <motion.button
             onClick={() => handleNav('#home')}
@@ -59,14 +59,14 @@ export default function Navbar() {
               className="rounded-xl overflow-hidden"
               style={{
                 background: 'white',
-                padding: '4px 8px',
+                padding: '3px 6px',
                 boxShadow: '0 0 0 2px rgba(201,168,76,0.6), 0 4px 20px rgba(0,0,0,0.5)',
               }}
             >
               <img
                 src={logo}
                 alt="Gourab Enterprises"
-                className="h-8 sm:h-11 w-auto object-contain block"
+                className="h-7 sm:h-11 w-auto object-contain block"
               />
             </div>
           </motion.button>
@@ -98,7 +98,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-yellow-400 text-2xl focus:outline-none p-2 rounded-lg bg-[#0f1e38]/85 border border-yellow-500/20"
+            className="md:hidden text-yellow-400 text-xl focus:outline-none p-2 rounded-lg bg-[#0f1e38]/85 border border-yellow-500/20 shrink-0"
             aria-label="Toggle menu"
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
